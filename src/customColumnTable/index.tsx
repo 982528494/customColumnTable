@@ -327,10 +327,7 @@ export const CustomColumnTable = (props: CustomColumnTableProps) => {
   //   setStorage(tempStorge);
   //   hanleColumnOnChange(tempStorge);
   // };
-  const fixed = (
-    id: string | number,
-    type: "left" | "right" | undefined = undefined
-  ) => {
+  const fixed = (id: string | number, type: fixedProps = undefined) => {
     let tempStorage = { ...storage };
     tempStorage[id].fixed = type;
     setStorage(tempStorage);
