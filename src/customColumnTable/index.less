@@ -1,0 +1,110 @@
+svg {
+  cursor: pointer;
+}
+.title {
+  font-weight: 500;
+}
+.ant-popover-inner-content {
+  padding: 0px;
+  .top {
+    padding: 4px 10px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+}
+
+.inner-content {
+  width: 200px;
+  .list-title {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding-left: 24px;
+    color: #00000073;
+    font-size: 12px;
+  }
+  .list-group {
+    max-height: 216px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .list-group::-webkit-scrollbar {
+    /* 隐藏默认的滚动条 */
+    -webkit-appearance: none;
+  }
+
+  .list-group::-webkit-scrollbar:vertical {
+    /* 设置垂直滚动条宽度 */
+    width: 6px;
+  }
+
+  .list-group:hover::-webkit-scrollbar-thumb:vertical {
+    /* 滚动条的其他样式定制，注意，这个一定也要定制，否则就是一个透明的滚动条 */
+    border-radius: 6px;
+    // border: 8px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    .checkbox {
+      flex: 1 1;
+    }
+    .fixbutton {
+      display: none;
+      svg {
+        margin-right: 8px;
+      }
+    }
+  }
+  .item:hover {
+    background-color: #e6f7ff;
+    .fixbutton {
+      display: inline-block;
+    }
+  }
+}
+
+.SortableItem {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  align-items: center;
+  padding: 18px 20px;
+  background-color: #fff;
+  box-shadow: 0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05),
+    0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);
+  border-radius: calc(4px / var(--scale-x, 1));
+  box-sizing: border-box;
+  list-style: none;
+  color: #333;
+  font-weight: 400;
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+
+.DragHandle {
+  margin-right: 10px;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  touch-action: none;
+  cursor: var(--cursor, pointer);
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  appearance: none;
+  background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.DragHandle:focus-visible {
+  box-shadow: 0 0px 0px 2px #4c9ffe;
+}
+
+.DragHandle svg {
+  flex: 0 0 auto;
+  margin: auto;
+  height: 100%;
+  overflow: visible;
+  fill: #919eab;
+}
