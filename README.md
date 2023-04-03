@@ -1,4 +1,4 @@
-自定义列表格(参考antd、antd-ProComponents)，支持拖拽排序、选中显示隐藏、首位固定、浏览器缓存
+自定义列表格(参考 antd、antd-ProComponents)，支持拖拽排序、选中显示隐藏、首位固定、浏览器缓存
 
 ## 何时使用
 
@@ -62,18 +62,19 @@ const columns = [
 
 ### columnsState
 
-| 参数     | 说明                              | 类型                        | 默认值 |
-| -------- | -------------------------- | --------------------------- | ------ |
-| value      | 列状态的值，支持受控模式    | Record<string, ColumnsState>;                      | -      |
-| onChange     | 列状态的值发生改变之后触发           | (value:Record<string, ColumnsState>)=>void                   | -      |
-| persistenceKey | 持久化列的 key，用于判断是否是同一个 table             | string \| number | -      |
-| persistenceType      | 持久化列的类类型， localStorage 设置在关闭浏览器后也是存在的，sessionStorage 关闭浏览器后会丢失     | localStorage \| sessionStorage                      | -      |
+| 参数            | 说明     | 类型                                       | 默认值 |
+| --------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------ | ------ |
+| value           | 列状态的值，支持受控模式                                                                        | Record<string, ColumnsState>;              | -      |
+| onChange        | 列状态的值发生改变之后触发                                                                      | (value:Record<string, ColumnsState>)=>void | -      |
+| persistenceKey  | 持久化列的 key，用于判断是否是同一个 table                                                      | string \| number                           | -      |
+| persistenceType | 持久化列的类类型， localStorage 设置在关闭浏览器后也是存在的，sessionStorage 关闭浏览器后会丢失 | localStorage \| sessionStorage             | -      |
 
-### toolButton 
+### toolButton
 
-表格工具栏扩展按钮,	类型ReactNode[]
+表格工具栏扩展按钮, 类型 ReactNode[]
 
-### tableProps 同 antd Table (以下内容为复制😄)
+### tableProps 同 antd Table (以下内容为复制 😄)
+
 #### Table
 
 | 参数              | 说明                                                                                                                                 | 类型                                                                                                                            | 默认值                                                                                                                               | 版本                        |
@@ -127,48 +128,46 @@ const columns = [
 />
 ```
 
-#### Column
+### Column
 
 列描述数据对象，是 columns 中的一项，Column 使用相同的 API。
 
-  <!-- prettier-ignore -->
-
-| 参数                              | 说明                                                                                                                                                                                         | 类型                                                                                                                                                                                | 默认值                 | 版本                           |
-| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------ | --- |
-| align                             | 设置列的对齐方式                                                                                                                                                                             | `left` \| `right` \| `center`                                                                                                                                                       | `left`                 |                                |
-| className                         | 列样式类名                                                                                                                                                                                   | string                                                                                                                                                                              | -                      |                                |
-| colSpan                           | 表头列合并,设置为 0 时，不渲染                                                                                                                                                               | number                                                                                                                                                                              | -                      |                                |
-| dataIndex                         | 列数据在数据项中对应的路径，支持通过数组查询嵌套路径                                                                                                                                         | string \| string\[]                                                                                                                                                                 | -                      |                                |
-| defaultFilteredValue              | 默认筛选值                                                                                                                                                                                   | string\[]                                                                                                                                                                           | -                      |                                |
-| filterResetToDefaultFilteredValue | 点击重置按钮的时候，是否恢复默认筛选值                                                                                                                                                       | boolean                                                                                                                                                                             | false                  |                                |
-| defaultSortOrder                  | 默认排序顺序                                                                                                                                                                                 | `ascend` \| `descend`                                                                                                                                                               | -                      |                                |
-| ellipsis                          | 超过宽度将自动省略，暂不支持和排序筛选一起使用。<br />设置为 `true` 或 `{ showTitle?: boolean }` 时，表格布局将变成 `tableLayout="fixed"`。                                                  | boolean \| { showTitle?: boolean }                                                                                                                                                  | false                  | showTitle: 4.3.0               |
-| filterDropdown                    | 可以自定义筛选菜单，此函数只负责渲染图层，需要自行编写各种交互                                                                                                                               | ReactNode \| (props: [FilterDropdownProps](https://github.com/ant-design/ant-design/blob/ecc54dda839619e921c0ace530408871f0281c2a/components/table/interface.tsx#L79)) => ReactNode | -                      |                                |
-| filterDropdownOpen                | 用于控制自定义筛选菜单是否可见                                                                                                                                                               | boolean                                                                                                                                                                             | -                      |                                |
-| filtered                          | 标识数据是否经过过滤，筛选图标会高亮                                                                                                                                                         | boolean                                                                                                                                                                             | false                  |                                |
-| filteredValue                     | 筛选的受控属性，外界可用此控制列的筛选状态，值为已筛选的 value 数组                                                                                                                          | string\[]                                                                                                                                                                           | -                      |                                |
-| filterIcon                        | 自定义 filter 图标。                                                                                                                                                                         | ReactNode \| (filtered: boolean) => ReactNode                                                                                                                                       | false                  |                                |
-| filterMultiple                    | 是否多选                                                                                                                                                                                     | boolean                                                                                                                                                                             | true                   |                                |
-| filterMode                        | 指定筛选菜单的用户界面                                                                                                                                                                       | 'menu' \| 'tree'                                                                                                                                                                    | 'menu'                 | 4.17.0                         |
-| filterSearch                      | 筛选菜单项是否可搜索                                                                                                                                                                         | boolean \| function(input, record):boolean                                                                                                                                          | false                  | boolean:4.17.0 function:4.19.0 |
-| filters                           | 表头的筛选菜单项                                                                                                                                                                             | object\[]                                                                                                                                                                           | -                      |                                |
-| fixed                             | （IE 下无效）列是否固定，可选 true (等效于 left) `left` `right`                                                                                                                              | boolean \| string                                                                                                                                                                   | false                  |                                |
-| key                               | React 需要的 key，如果已经设置了唯一的 `dataIndex`，可以忽略这个属性                                                                                                                         | string                                                                                                                                                                              | -                      |                                |
-| render                            | 生成复杂数据的渲染函数，参数分别为当前行的值，当前行数据，行索引                                                                                                                             | function(text, record, index) {}                                                                                                                                                    | -                      |                                |
-| responsive                        | 响应式 breakpoint 配置列表。未设置则始终可见。                                                                                                                                               | [Breakpoint](https://github.com/ant-design/ant-design/blob/015109b42b85c63146371b4e32b883cf97b088e8/components/_util/responsiveObserve.ts#L1)\[]                                    | -                      | 4.2.0                          |
-| rowScope                          | 设置列范围                                                                                                                                                                                   | `row` \| `rowgroup`                                                                                                                                                                 | -                      | 5.1.0                          |
-| shouldCellUpdate                  | 自定义单元格渲染时机                                                                                                                                                                         | (record, prevRecord) => boolean                                                                                                                                                     | -                      | 4.3.0                          |
-| showSorterTooltip                 | 表头显示下一次排序的 tooltip 提示, 覆盖 table 中 `showSorterTooltip`                                                                                                                         | boolean \| [Tooltip props](/components/tooltip-cn/#api)                                                                                                                             | true                   |                                |
-| sortDirections                    | 支持的排序方式，覆盖 `Table` 中 `sortDirections`， 取值为 `ascend` `descend`                                                                                                                 | Array                                                                                                                                                                               | \[`ascend`, `descend`] |                                |
-| sorter                            | 排序函数，本地排序使用一个函数(参考 [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) 的 compareFunction)，需要服务端排序可设为 true | function \| boolean                                                                                                                                                                 | -                      |                                |
-| sortOrder                         | 排序的受控属性，外界可用此控制列的排序，可设置为 `ascend` `descend` `null`                                                                                                                   | `ascend` \| `descend` \| null                                                                                                                                                       | -                      |                                |
-| title                             | 列头显示文字（函数用法 `3.10.0` 后支持）                                                                                                                                                     | ReactNode \| ({ sortOrder, sortColumn, filters }) => ReactNode                                                                                                                      | -                      |                                |
-| width                             | 列宽度（[指定了也不生效？](https://github.com/ant-design/ant-design/issues/13825#issuecomment-449889241)）                                                                                   | string \| number                                                                                                                                                                    | -                      |                                |
-| onCell                            | 设置单元格属性                                                                                                                                                                               | function(record, rowIndex)                                                                                                                                                          | -                      |                                |
-| onFilter                          | 本地模式下，确定筛选的运行函数                                                                                                                                                               | function                                                                                                                                                                            | -                      |                                |
-| onFilterDropdownOpenChange        | 自定义筛选菜单可见变化时调用                                                                                                                                                                 | function(visible) {}                                                                                                                                                                | -                      |                                |     |
-| onHeaderCell                      | 设置头部单元格属性                                                                                                                                                                           | function(column)                                                                                                                                                                    | -                      |                                |
-
+<!-- prettier-ignore -->
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| align | 设置列的对齐方式 | `left` \| `right` \| `center` | `left` |  |
+| className | 列样式类名 | string | - |  |
+| colSpan | 表头列合并,设置为 0 时，不渲染 | number | - |  |
+| dataIndex | 列数据在数据项中对应的路径，支持通过数组查询嵌套路径 | string \| string\[] | - |  |
+| defaultFilteredValue | 默认筛选值 | string\[] | - |  |
+| filterResetToDefaultFilteredValue | 点击重置按钮的时候，是否恢复默认筛选值 | boolean | false |  |
+| defaultSortOrder | 默认排序顺序 | `ascend` \| `descend` | - |  |
+| ellipsis | 超过宽度将自动省略，暂不支持和排序筛选一起使用。<br />设置为 `true` 或 `{ showTitle?: boolean }` 时，表格布局将变成 `tableLayout="fixed"`。 | boolean \| { showTitle?: boolean } | false | showTitle: 4.3.0 |
+| filterDropdown | 可以自定义筛选菜单，此函数只负责渲染图层，需要自行编写各种交互 | ReactNode \| (props: [FilterDropdownProps](https://github.com/ant-design/ant-design/blob/ecc54dda839619e921c0ace530408871f0281c2a/components/table/interface.tsx#L79)) => ReactNode | - |  |
+| filterDropdownOpen | 用于控制自定义筛选菜单是否可见 | boolean | - |  |
+| filtered | 标识数据是否经过过滤，筛选图标会高亮 | boolean | false |  |
+| filteredValue | 筛选的受控属性，外界可用此控制列的筛选状态，值为已筛选的 value 数组 | string\[] | - |  |
+| filterIcon | 自定义 filter 图标。 | ReactNode \| (filtered: boolean) => ReactNode | false |  |
+| filterMultiple | 是否多选 | boolean | true |  |
+| filterMode | 指定筛选菜单的用户界面 | 'menu' \| 'tree' | 'menu' | 4.17.0 |
+| filterSearch | 筛选菜单项是否可搜索 | boolean \| function(input, record):boolean | false | boolean:4.17.0 function:4.19.0 |
+| filters | 表头的筛选菜单项 | object\[] | - |  |
+| fixed | （IE 下无效）列是否固定，可选 true (等效于 left) `left` `right` | boolean \| string | false |  |
+| key | React 需要的 key，如果已经设置了唯一的 `dataIndex`，可以忽略这个属性 | string | - |  |
+| render | 生成复杂数据的渲染函数，参数分别为当前行的值，当前行数据，行索引 | function(text, record, index) {} | - |  |
+| responsive | 响应式 breakpoint 配置列表。未设置则始终可见。 | [Breakpoint](https://github.com/ant-design/ant-design/blob/015109b42b85c63146371b4e32b883cf97b088e8/components/_util/responsiveObserve.ts#L1)\[] | - | 4.2.0 |
+| rowScope | 设置列范围 | `row` \| `rowgroup` | - | 5.1.0 |
+| shouldCellUpdate | 自定义单元格渲染时机 | (record, prevRecord) => boolean | - | 4.3.0 |
+| showSorterTooltip | 表头显示下一次排序的 tooltip 提示, 覆盖 table 中 `showSorterTooltip` | boolean \| [Tooltip props](/components/tooltip-cn/#api) | true |  |
+| sortDirections | 支持的排序方式，覆盖 `Table` 中 `sortDirections`， 取值为 `ascend` `descend` | Array | \[`ascend`, `descend`] |  |
+| sorter | 排序函数，本地排序使用一个函数(参考 [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) 的 compareFunction)，需要服务端排序可设为 true | function \| boolean | - |  |
+| sortOrder | 排序的受控属性，外界可用此控制列的排序，可设置为 `ascend` `descend` `null` | `ascend` \| `descend` \| null | - |  |
+| title | 列头显示文字（函数用法 `3.10.0` 后支持） | ReactNode \| ({ sortOrder, sortColumn, filters }) => ReactNode | - |  |
+| width | 列宽度（[指定了也不生效？](https://github.com/ant-design/ant-design/issues/13825#issuecomment-449889241)） | string \| number | - |  |
+| onCell | 设置单元格属性 | function(record, rowIndex) | - |  |
+| onFilter | 本地模式下，确定筛选的运行函数 | function | - |  |
+| onFilterDropdownOpenChange | 自定义筛选菜单可见变化时调用 | function(visible) {} | - |  |  |
+| onHeaderCell | 设置头部单元格属性 | function(column) | - |  |
 #### ColumnGroup
 
 | 参数  | 说明         | 类型      | 默认值 |
