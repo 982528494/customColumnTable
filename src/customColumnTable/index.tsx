@@ -222,7 +222,7 @@ interface StorageProps {
   };
 }
 interface CustomColumnTableProps {
-  toolButton?: any[];
+  toolButton?: ReactNode[];
   columnsState: {
     value?: StorageProps; //列状态的值，支持受控模式
     onChange?: (val: StorageProps) => void; //列状态的值发生改变之后触发

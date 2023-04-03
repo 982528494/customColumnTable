@@ -89,7 +89,7 @@ function App() {
   return (
     <CustomColumnTable
       tableProps={{
-        rowKey: "id",
+        rowKey: "key",
         columns,
         dataSource: data,
         pagination: false,
